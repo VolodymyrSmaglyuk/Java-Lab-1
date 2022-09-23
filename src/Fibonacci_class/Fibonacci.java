@@ -7,7 +7,7 @@ package Fibonacci_class;
  * */
 public class Fibonacci {
     private final int n;
-    private int fibnum;
+    private final int fibnum;
 
     /**
      * This is a constructor of class Fibonacci.
@@ -18,19 +18,7 @@ public class Fibonacci {
         this.n = n;
         this.fibnum = fibnum;
     }
-    /**
-     * This method is used to get N number of Fibonacci.
-     * @return N number of Fibonacci.
-     * */
-    public int getN() {
-        return n;
-    }
-    /**
-     * This method is used for setting counted number of Fibonacci for count attribute.
-     * */
-    public void setFibnum(int fibnum) {
-        this.fibnum = fibnum;
-    }
+
     /**
      * This method is for printing all data about object of Fibonacci class.
      * */

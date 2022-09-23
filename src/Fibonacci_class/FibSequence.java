@@ -4,55 +4,45 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FibSequence {
-    public ArrayList<Fibonacci> numbers = new ArrayList<> ();
-    private final int []arr;
+    public ArrayList<Fibonacci> numbers;
     /**
      * Constructor of FibSequence class.
-     * @param size size of array for Fibonacci sequence .
      * */
-    public FibSequence(int size) {
-        this.arr = new int[size + 1];
+    public FibSequence( ) {
+        numbers = new ArrayList<> ();
     }
     /**
      * This method is for creating Fibonacci objects and then adding them to numbers list.
      * @param array array whith N for object of Fibonacci class.
+     * @param thebiggest the bigest N in array.
      * */
-    public void GenerateFibNumbersList(int []array){
-        for (int j : array) {
-            Fibonacci numb = new Fibonacci (j, 0);
-            numbers.add (numb);
+    public void GenerateFibonacciList(int []array,int thebiggest){
+        int first=0,second=1;
+        if(Arrays.stream(array).anyMatch(i -> i == 0)){
+            Fibonacci numb = new Fibonacci(0, first);
+            numbers.add(numb);
+        }
+        if(Arrays.stream(array).anyMatch(i -> i == -1)){
+            Fibonacci numb = new Fibonacci(-1, second);
+            numbers.add(numb);
+        }
+        int next;
+        Arrays.sort(array);
+        for(int i=2;i<=thebiggest;i++) {
+            next = first - second;
+            first = second;
+            second = next;
+            if(Arrays.binarySearch(array, -i)>=0){
+                Fibonacci numb = new Fibonacci(-i, next);
+                numbers.add(numb);
+            }
         }
     }
-    /**
-     * This method is for generating Fibonacci sequence.
-     * It also sets needed values form sequence to elements of Fibonacci objects list.
-     * */
-    public void GenerateFibonacciSequence(){
-        this.arr[0] = 0;
-        this.arr[1] = 1;
-        int k = 2;
-        for(;k < this.arr.length;k++){
-            this.arr[k] = this.arr[k - 2] - this.arr[k - 1];
-        }
-        for (Fibonacci number : numbers) {
-            k = number.getN ();
-            number.setFibnum (this.arr[-k]);
-        }
-    }
-    /**
-     * Getter for list of Fibonacci objects/
-     * @return numers - list
-     * */
-    //щоб в main вивести масив обєктів Фібоначчі
-    public ArrayList<Fibonacci> getNumbers() {
-        return numbers;
-    }
-    /**
-     * This method is used for representing Fibonacci sequence
-     * */
+   /**
+   * This method is used for representing Fibonacci list.
+   */
     @Override
     public String toString() {
-        return "Послідовність Фібоначчі: "+ Arrays.toString (arr);
+        return "Знайдені числа Фібоначчі:\n"+numbers+"\n";
     }
 }
-

@@ -1,9 +1,9 @@
 package Fibonacci_class;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    // Моє завдання:
     // Визначити N-е число Фібоначчі для заданого N≤0.
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
@@ -22,11 +22,8 @@ public class Main {
             arr[i]=n;
         }
         scanner.close ();
-        FibSequence sequence =new FibSequence (-biggest);//оскільки результат найбільше від'ємне число
-        sequence.GenerateFibNumbersList (arr);
-        sequence.GenerateFibonacciSequence ();
-        System.out.println (sequence.getNumbers ());
-        System.out.println (sequence);
-
+        FibSequence fiblist =new FibSequence ();
+        fiblist.GenerateFibonacciList (arr,-biggest);
+        System.out.println (fiblist);
     }
 }
