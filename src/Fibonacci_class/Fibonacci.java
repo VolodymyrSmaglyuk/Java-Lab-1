@@ -22,10 +22,8 @@ public class Fibonacci {
     /**
      * This method is for printing all data about object of Fibonacci class.
      * */
-    @Override
     public String toString() {
-        return "\nN-е число Фібоначчі для заданого N: " + n + " = " + fibnum;
+        return "N-е число Фібоначчі для заданого N: " + n + " = " + fibnum;
     }
-
 }
 
